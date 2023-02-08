@@ -1,0 +1,58 @@
+function validateForm() { //SE DATA DE NASCIMENTO FOR MAIOR QUE 12, REJEITA
+    var form = document.getElementById("myForm");
+    var dn = form.elements.dn.value;
+    if (dn.length > 10) {
+        alert("Data de nascimento inválida. Insira um valor válido no formato AAAA-MM-DD.");
+        return false;
+    }
+    var inputs = document.querySelectorAll("input");
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value == "") {
+            alert("Por favor preencha todos os campos.");
+            return false;
+        }
+    }
+    return true;
+}
+
+function formatDate(input) { //AUTOWRITER NA DATA
+    var value = input.value;
+    if (value.length == 2 || value.length == 5) {
+        if (value[value.length - 1] == "-") return;
+    }
+    if (value.length == 4 && value[4] != "-") {
+        input.value = value + "-";
+    }
+    if (value.length == 7 && value[7] != "-") {
+        input.value = value.substr(0, 7) + "-" + value.substr(7);
+    }
+}
+
+function formatCPF(input) { //AUTOWRITER NO CPF
+    var value = input.value;
+    if (value.length == 3 || value.length == 7 || value.length == 11) {
+        if (value[value.length - 1] == "." || value[value.length - 1] == "-") return;
+    }
+    if (value.length == 3) {
+        input.value = value + ".";
+    }
+    if (value.length == 7) {
+        input.value = value + ".";
+    }
+    if (value.length == 11) {
+        input.value = value + "-";
+    }
+}
+
+function formatPhone(input) { //AUTOWRITER DE CELULAR
+    var value = input.value;
+    if (value.length == 2 || value.length == 8) {
+        if (value[value.length - 1] == " " || value[value.length - 1] == "-") return;
+    }
+    if (value.length == 2) {
+        input.value = value + " ";
+    }
+    if (value.length == 8) {
+        input.value = value + "-";
+    }
+}
